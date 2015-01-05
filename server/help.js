@@ -14,10 +14,6 @@ exports.respond = function(res, data, status) {
 
 exports.prepareToSend = function(req, cb) {
   var data = "";
-  console.log("in prepareToSend")
-  req.on("data", function(piece) {
-    console.log("in data event");
-    data += piece;
-  });
+  req.on("data", function(piece) { data += piece; });
   req.on("end", function() { cb(JSON.parse(data)); });
 };
