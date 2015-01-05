@@ -5,7 +5,6 @@ var apiRoutes = require('./api-routes');
 var userRoutes = require('./user-routes');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
-var urlUtil = require("url");
 
 app.use(bodyParser.json());
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
