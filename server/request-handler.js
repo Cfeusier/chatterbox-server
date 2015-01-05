@@ -1,12 +1,6 @@
 var help = require('./help');
 
-// http.createServer(function(req, res) {
-//   var route = routeMap[urlUtil.parse(req.url).pathname];
-//   route ? route(req, res) : handleRequest(req, res);
-// });
-
 var objectId = 1;
-
 var db = [
   {
     text: "text message",
@@ -16,22 +10,18 @@ var db = [
 ];
 
 var verbs = {
-
-  'GET': function(req, res) {
-    help.respond(res, { results: db });
-  },
+  'GET': function(req, res) { help.respond(res, { results: db }); },
 
   'POST': function(req, res) {
     help.prepareToSend(req, function(message) {
+      // write to db
       db.push(message);
       message.objectId = ++objectId;
     });
     help.respond(res, { objectId: 1 }, 200);
   },
 
-  'OPTIONS': function(req, res) {
-    help.respond(res, false);
-  }
+  'OPTIONS': function(req, res) { help.respond(res, false); }
 };
 
 var requestHandler = function(req, res) {
