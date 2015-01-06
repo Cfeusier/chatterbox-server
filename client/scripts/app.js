@@ -18,10 +18,23 @@ app.server = 'https://chitchatroom.herokuapp.com/classes/chatterbox';
 
 app.init = function() {
   app.bindEvents();
+  $.when(app.onLoad()).done(app.runLoop());
+};
+
+app.onLoad = function() {
   app.fetch(function(data) {
     app.addMessages(data);
     app.loadRooms(data);
   });
+};
+
+app.runLoop = function() {
+  setInterval(function() {
+    app.fetch(function(data) {
+      app.clearMessages();
+      app.addMessages(data, app.currentRoom);
+    });
+  }, 1000);
 };
 
 app.send = function(message) {
@@ -161,7 +174,7 @@ app.bindEvents = function() {
   $(document).on('click', '.username', app.addFriend);
   $(document).on("submit", "#new-room", app.newRoom);
   $(document).on("click", ".room", app.handleRoomFilter);
-  $(document).on("click", "#load-messages", app.loadMessages);
+  // $(document).on("click", "#load-messages", app.loadMessages);
 };
 
 $(function() { app.init(); });
