@@ -3,11 +3,8 @@ var goose = require('mongoose');
 module.exports = function() {
   var pEnv = process.env;
   var devUrl = 'mongodb://localhost/chitchatroom_dev';
-  var dbUri = pEnv.MONGOLAB_URI || pEnv.MONGOHQ_URL  || devUrl;
-  goose.connect(dbUri);
+  goose.connect(pEnv.MONGOLAB_URI || pEnv.MONGOHQ_URL  || devUrl);
   var db = goose.connection;
   db.on('error', console.error.bind(console, 'connection error'));
-  db.once('open', function(callback) {
-    console.log("mongo is now connected, gametime");
-  });
+  db.once('open', console.log.bind(console, "mongo is now connected, gametime"));
 };
