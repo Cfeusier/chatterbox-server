@@ -5,7 +5,8 @@
   "author": "Clark Feusier",
   "license": "Copyright 2015, Clark Feusier, all rights reserved.",
   "scripts": {
-    "test": "mocha server/spec"
+    "test": "mocha server/spec",
+    "start": "node server/server.js"
   },
   "devDependencies": {
     "mocha": "^1.21.4",
@@ -20,5 +21,9 @@
     "mongoose": "^3.8.21",
     "promise": "^6.0.1",
     "underscore": "^1.7.0"
+  },
+   "repository": {
+    "type": "git",
+    "url": "https://github.com/cfeusier/chitchat"
   }
 }
