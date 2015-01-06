@@ -1,7 +1,7 @@
 var goose = require('mongoose');
 
 module.exports = function() {
-  goose.connect('mongodb://127.0.0.1/chatterbox_dev');
+  goose.connect(MONGOLAB_URI);
   var db = goose.connection;
   db.on('error', console.error.bind(console, 'connection error'));
   db.once('open', function(callback) {
