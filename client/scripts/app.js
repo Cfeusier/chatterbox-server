@@ -14,7 +14,7 @@ app.username = _.escape(query.substring(query.indexOf('=') + 1, query.length));
 app.userFriends = [];
 app.rooms = ['All Rooms'];
 app.currentRoom = app.currentRoom || 'All Rooms';
-app.server = 'http://127.0.0.1:3000/classes/chatterbox';
+app.server = 'https://chitchatroom.herokuapp.com/classes/chatterbox';
 
 app.init = function() {
   app.bindEvents();
