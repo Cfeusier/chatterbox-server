@@ -7,7 +7,6 @@
   "scripts": {
     "test": "mocha server/spec",
     "start": "node server/server.js"
-
   },
   "devDependencies": {
     "mocha": "^1.21.4",
