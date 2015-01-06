@@ -90,7 +90,10 @@ app.addFriend = function(e) {
   var friendUsername = e.target.innerText.substring(0, e.target.innerText.length - 2);
   if (app.userFriends.indexOf(friendUsername) === -1) {
     app.userFriends.push(friendUsername);
-    $('.username').end().find("span.username:contains('" + friendUsername + "')").siblings().css('font-style', 'italic');
+    var user = $('.username').end().find("span.username:contains('" + friendUsername + "')");
+    var siblings = user.siblings();
+    user.css('font-style', 'italic');
+    siblings.css('font-style', 'italic');
   }
 };
 app.checkRoom = function(roomname) {
