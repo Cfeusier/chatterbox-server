@@ -65,11 +65,8 @@ app.addMessages = function(data, roomFilter) {
 app.clearMessages = function() { $("#chats").children().remove(); };
 
 app.addMessage = function(message) {
-  var temp = _.template("<div><span class='username'><%- username %>: </span><span class='message'><%- chatMessage %></span></div>");
+  var temp = _.template("<div class='chat'><span class='username'><%- username %>: </span><span class='message'><%- chatMessage %></span></div>");
   var messageToAdd = temp({ username: message['username'], chatMessage: message.text });
-  if (app.userFriends.indexOf(message['username']) >= 0) {
-    console.log("match");
-  }
   $("#chats").prepend(messageToAdd);
 };
 
@@ -93,7 +90,7 @@ app.addFriend = function(e) {
   var friendUsername = e.target.innerText.substring(0, e.target.innerText.length - 2);
   if (app.userFriends.indexOf(friendUsername) === -1) {
     app.userFriends.push(friendUsername);
-    $('.username').end().find("span.username:contains('" + friendUsername + "')").css('font-weight', 'bold');
+    $('.username').end().find("span.username:contains('" + friendUsername + "')").siblings().css('font-style', 'italic');
   }
 };
 app.checkRoom = function(roomname) {
