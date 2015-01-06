@@ -6,7 +6,8 @@
   "license": "Copyright 2015, Clark Feusier, all rights reserved.",
   "scripts": {
     "test": "mocha server/spec",
-    "start": "node server/server.js"
+    "start": "node server/server.js",
+    "postinstall": "bower install && grunt build"
   },
   "devDependencies": {
     "mocha": "^1.21.4",
