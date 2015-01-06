@@ -1,16 +1,16 @@
-var util = require('../utils/help');
-var models = require('../config/models')();
+var util = require('../utils/responder');
+var collec = require('../utils/messageHandler');
 
 module.exports = function(app) {
   app.get('/classes/chatterbox', function(req, res) {
-    models.message.find({}, function(err, messages) {
+    collec.findMsg({}, function(messages) {
       util.respond(res, { results: messages });
     });
   });
 
-  app.post('/classes/chatterbox', function(request, response) {
-    util.prepare(request, function(message) {
-      util.respond(response, message);
+  app.post('/classes/chatterbox', function(req, res) {
+    collec.createMsg(req, function(message) {
+      util.respond(res, message);
     });
   });
 

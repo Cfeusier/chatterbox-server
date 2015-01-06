@@ -1,5 +1,3 @@
-var models = require('../config/models')();
-
 var headers = {
   "access-control-allow-origin": "*",
   "access-control-allow-methods": "GET, POST, PUT, DELETE, OPTIONS",
@@ -19,10 +17,4 @@ exports.respond = function(response, data, status) {
   status = status || 200;
   setHeaders(response);
   response.status(status).send(data);
-};
-
-exports.prepare = function(request, cb) {
-  var messageData = request.body;
-  var createMessage = models.message.create(messageData);
-  createMessage.then(function(message) { cb(message) });
 };
