@@ -18,7 +18,7 @@ var setHeaders = function(response) {
 exports.respond = function(response, data, status) {
   status = status || 200;
   setHeaders(response);
-  response.send(data);
+  response.status(status).send(data);
 };
 
 exports.prepare = function(request, cb) {
