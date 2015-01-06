@@ -1,9 +1,9 @@
 {
   "name": "chatterbox",
   "version": "0.0.1",
-  "main": "server/basic-server.js",
-  "author": "Hack Reactor",
-  "license": "Copyright 2013, Hack Reactor. All rights reserved.",
+  "main": "server/server.js",
+  "author": "Clark Feusier",
+  "license": "Copyright 2015, Clark Feusier, all rights reserved.",
   "scripts": {
     "test": "mocha server/spec"
   },
@@ -15,8 +15,10 @@
   "dependencies": {
     "body-parser": "^1.10.1",
     "express": "^4.10.7",
+    "jquery": "^2.1.3",
     "method-override": "^2.3.1",
-    "node-static": "^0.7.6",
+    "mongoose": "^3.8.21",
+    "promise": "^6.0.1",
     "underscore": "^1.7.0"
   }
 }

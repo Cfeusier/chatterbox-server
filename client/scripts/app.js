@@ -40,7 +40,6 @@ app.fetch = function(callback) {
   $.ajax({
     url: app.server,
     type: 'GET',
-    data : { 'order':'-createdAt' },
     success: callback,
     error: app.logResponse
   });
@@ -48,12 +47,12 @@ app.fetch = function(callback) {
 
 app.addMessages = function(data, roomFilter) {
   if (!roomFilter || app.currentRoom === 'All Rooms') {
-    _.each(data.results.reverse(), function(message) {
+    _.each(data.results, function(message) {
       app.addMessage(message);
       app.checkRoom(message['roomname']);
     });
   } else {
-    var filtered = _.filter(data.results.reverse(), function(message) {
+    var filtered = _.filter(data.results, function(message) {
       return message["roomname"] === roomFilter;
     });
     _.each(filtered, function(message) {
@@ -119,7 +118,7 @@ app.newRoom = function(e) {
 app.addRoom = function(roomname, oldRoom) {
   var temp = _.template("<li> <a href='#' class='room'> <%- roomname %> </a> </li>");
   var roomToAdd = temp({ roomname: roomname });
-  $("#roomSelect").prepend(roomToAdd);
+  $("#roomSelect").append(roomToAdd);
   app.toggleCurrentRoom(oldRoom);
 };
 
@@ -152,7 +151,7 @@ app.toggleCurrentRoom = function(oldRoom) {
 };
 
 app.loadRooms = function(data) {
-  _.each(app.rooms.reverse(), function(roomname) { if (roomname) { app.addRoom(roomname); } });
+  _.each(app.rooms, function(roomname) { if (roomname) { app.addRoom(roomname); } });
 };
 
 app.logResponse = function(data) { console.log(data); };
